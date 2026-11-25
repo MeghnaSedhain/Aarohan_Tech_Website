@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aarohan Technology | Building Smarter Solutions for a Digital Future</title>
+  <meta name="description" content="At Aarohan Technology, we turn ideas into impactful digital solutions through software engineering, cloud architecture, and AI.">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    .bg-mesh {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(at 85% 15%, rgba(59, 130, 246, 0.16) 0px, transparent 55%),
+        radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.08) 0px, transparent 40%),
+        radial-gradient(at 90% 80%, rgba(147, 197, 253, 0.2) 0px, transparent 50%),
+        radial-gradient(at 20% 90%, rgba(219, 234, 254, 0.4) 0px, transparent 50%);
+    }
+
+    .dark .bg-mesh {
+      background-color: #0b0f19;
+      background-image: 
+        radial-gradient(at 85% 15%, rgba(37, 99, 235, 0.22) 0px, transparent 55%),
+        radial-gradient(at 10% 20%, rgba(30, 58, 138, 0.18) 0px, transparent 40%),
+        radial-gradient(at 90% 80%, rgba(29, 78, 216, 0.15) 0px, transparent 50%);
+    }
+
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.12);
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-mesh text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen selection:bg-brand-600 selection:text-white">
+
+  <!-- TOP BAR -->
+  <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600 text-white text-xs py-2 px-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="bg-white/20 px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider text-[10px]">Aarohan</span>
+        <span class="hidden sm:inline">Crafting next-generation digital products & AI platforms</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <!-- Theme Switcher -->
+        <button id="themeToggleBtn" onclick="toggleDarkMode()" class="flex items-center space-x-1.5 bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-md transition font-medium text-xs">
+          <span id="themeToggleText">🌙 Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/85 dark:bg-slate-900/85 border-b border-blue-100/60 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-blue-100 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 p-0.5 shadow-sm flex items-center justify-center">
+          <img src="logo.png" alt="Aarohan Technology" class="w-full h-full object-contain transform group-hover:scale-105 transition-transform" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white leading-tight">Aarohan</span>
+          <span class="text-xs uppercase tracking-widest font-semibold text-brand-600 dark:text-brand-400 -mt-0.5">Technology</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#home" class="text-brand-600 dark:text-brand-400 font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-brand-600 after:rounded-full">Home</a>
+        <a href="#services" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition">Services</a>
+        <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition">About</a>
+        <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition">Projects</a>
+        <a href="#careers" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition">Careers</a>
+        <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition">Contact</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center space-x-4">
+        <button onclick="openModal()" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-brand-500/25 hover:shadow-md transition duration-200 flex items-center space-x-2 group">
+          <span>Get in Touch</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Content Column -->
+      <div class="lg:col-span-7 z-10 space-y-6">
+        
+        <!-- Pill Badge -->
+        <div class="inline-flex items-center space-x-2 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/70 dark:border-blue-800/80 px-4 py-1.5 rounded-full text-xs font-semibold text-brand-700 dark:text-brand-300 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          <span>Innovating Today. Building Tomorrow.</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
+          Building Smarter Solutions for a 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-blue-500 to-indigo-600">Digital Future.</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed">
+          At Aarohan Technology, we turn ideas into impactful digital solutions through software engineering, cloud architecture, and cutting-edge AI.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#services" class="inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-brand-600/20 hover:shadow-brand-600/35 transition duration-200 group">
+            <span>Explore Our Services</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+          <a href="#about" class="inline-flex items-center space-x-2 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-brand-600 dark:text-brand-400 font-semibold px-6 py-3.5 rounded-full border border-blue-200 dark:border-slate-700 shadow-sm transition duration-200">
+            <span>Learn More</span>
+          </a>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="pt-6 border-t border-slate-200/60 dark:border-slate-800/80 flex flex-wrap items-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+          <div class="flex items-center space-x-2">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span>Full-Cycle Engineering</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span>Custom AI & LLM Systems</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span>Scalable Cloud Architecture</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Visual Column (Exact geometric motif from reference) -->
+      <div class="lg:col-span-5 relative flex items-center justify-center">
+        <!-- Glow Backlight -->
+        <div class="absolute w-[420px] h-[420px] bg-gradient-to-tr from-brand-300/40 via-sky-200/30 to-indigo-300/20 dark:from-brand-600/25 dark:via-sky-500/15 dark:to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="relative w-full max-w-[420px] aspect-square flex items-center justify-center animate-float">
+          <svg viewBox="0 0 500 500" class="w-full h-full drop-shadow-2xl">
+            <defs>
+              <linearGradient id="gradWave" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3"/>
+                <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.45"/>
+              </linearGradient>
+              <linearGradient id="legLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#60a5fa"/>
+                <stop offset="100%" stop-color="#2563eb"/>
+              </linearGradient>
+              <linearGradient id="legRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6"/>
+                <stop offset="100%" stop-color="#1d4ed8"/>
+              </linearGradient>
+              <linearGradient id="prismCenter" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#bae6fd"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Organic Fluid Wave Background -->
+            <path d="M 50,220 C 120,130 280,110 390,170 C 480,220 500,340 430,420 C 350,510 180,480 90,410 C 20,350 10,270 50,220 Z" fill="url(#gradWave)" />
+            
+            <!-- Sweeping Accent Wave -->
+            <path d="M 280,60 C 390,70 480,160 470,280 C 460,380 370,450 300,450 C 390,380 410,240 330,150 C 290,100 240,80 280,60 Z" fill="#60a5fa" opacity="0.32" />
+
+            <!-- Giant Stylized Geometric 'A' (Hero Emblem) -->
+            <g transform="translate(60, 40) scale(0.78)">
+              <polygon points="250,50 60,430 180,430 250,260" fill="url(#legLeft)" opacity="0.95" />
+              <polygon points="250,50 440,430 320,430 250,260" fill="url(#legRight)" opacity="0.95" />
+              <polygon points="170,320 330,320 250,160" fill="url(#prismCenter)" opacity="0.95" />
+              <polygon points="250,260 170,430 330,430" fill="#1e40af" opacity="0.45" />
+            </g>
+          </svg>
+
+          <!-- Floating Metric Badge 1 -->
+          <div class="absolute -bottom-2 -left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-blue-100 dark:border-slate-700 shadow-xl rounded-2xl p-4 flex items-center space-x-3.5 card-hover">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/50 flex items-center justify-center text-brand-600 dark:text-brand-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">System Uptime</div>
+              <div class="text-sm font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                <span>99.98% High Availability</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Metric Badge 2 -->
+          <div class="absolute -top-3 -right-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-blue-100 dark:border-slate-700 shadow-xl rounded-2xl p-3.5 flex items-center space-x-3 card-hover">
+            <div class="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">AI & Cloud Native</div>
+              <div class="text-xs font-bold text-slate-900 dark:text-white">Next-Gen Architecture</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS COUNTER -->
+  <section class="max-w-7xl mx-auto px-6 -mt-8 mb-16 relative z-20">
+    <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-blue-100 dark:border-slate-800 rounded-2xl shadow-xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-800">
+      <div class="pt-2 md:pt-0">
+        <div class="text-3xl lg:text-4xl font-extrabold text-brand-600 dark:text-brand-400">50+</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mt-1">Delivered Projects</div>
+      </div>
+      <div class="pt-2 md:pt-0">
+        <div class="text-3xl lg:text-4xl font-extrabold text-brand-600 dark:text-brand-400">99.4%</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mt-1">Client Satisfaction</div>
+      </div>
+      <div class="pt-2 md:pt-0">
+        <div class="text-3xl lg:text-4xl font-extrabold text-brand-600 dark:text-brand-400">10x</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mt-1">Faster Time-to-Market</div>
+      </div>
+      <div class="pt-2 md:pt-0">
+        <div class="text-3xl lg:text-4xl font-extrabold text-brand-600 dark:text-brand-400">24/7</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mt-1">Dedicated Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION ("What We Do") -->
+  <section id="services" class="py-16 bg-white/60 dark:bg-slate-900/40 border-y border-blue-50 dark:border-slate-800/60 transition-colors">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1 rounded-full border border-blue-200/50 dark:border-blue-800/50">OUR SERVICES</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">What We Do</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">End-to-end digital excellence engineered to scale your vision.</p>
+      </div>
+
+      <!-- 4 Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Software Development -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700 shadow-sm card-hover flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-5 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Software Development</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Custom software solutions tailored to your unique operational scale, business workflows, and architecture.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Explore Details</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700 shadow-sm card-hover flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-5 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Web Development</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Modern, responsive, and ultra-fast web applications built with Next.js, React, and cloud-native services.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Explore Details</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </div>
+
+        <!-- AI Solutions -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700 shadow-sm card-hover flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -right-6 -top-6 w-20 h-20 bg-blue-500/10 rounded-full blur-xl pointer-events-none"></div>
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-5 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">AI Solutions</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Intelligent enterprise automation, custom LLMs, retrieval-augmented systems, and computer vision.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Explore Details</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </div>
+
+        <!-- Digital Solutions -->
+        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700 shadow-sm card-hover flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-5 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Digital Solutions</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Cloud migration, DevOps automation, APIs, and connected infrastructure for modern scaling.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Explore Details</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE AAROHAN SECTION -->
+  <section id="about" class="py-20 max-w-7xl mx-auto px-6">
+    <div class="bg-gradient-to-br from-blue-50/80 via-white to-sky-50/50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-950/30 rounded-3xl p-8 sm:p-12 border border-blue-100 dark:border-slate-700/80 shadow-lg">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left Title & Description -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="inline-flex items-center space-x-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">WHY CHOOSE AAROHAN?</span>
+            <span class="h-0.5 w-6 bg-brand-600"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+            Your Trusted Technology Partner
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            We are committed to innovation, quality, and collaboration to help you grow and lead in the digital era.
+          </p>
+        </div>
+
+        <!-- Right 3 Pillars -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          
+          <!-- Pillar 1: Innovation -->
+          <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-200/70 dark:border-slate-700 text-center card-hover">
+            <div class="w-12 h-12 mx-auto rounded-full bg-blue-50 dark:bg-blue-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Innovation</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-normal">
+              Always exploring better solutions & next-gen technologies.
+            </p>
+          </div>
+
+          <!-- Pillar 2: Reliability -->
+          <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-200/70 dark:border-slate-700 text-center card-hover">
+            <div class="w-12 h-12 mx-auto rounded-full bg-blue-50 dark:bg-blue-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Reliability</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-normal">
+              Building dependable, long-term partnerships on trusted delivery.
+            </p>
+          </div>
+
+          <!-- Pillar 3: Growth -->
+          <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-200/70 dark:border-slate-700 text-center card-hover">
+            <div class="w-12 h-12 mx-auto rounded-full bg-blue-50 dark:bg-blue-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Growth</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-normal">
+              Together, we scale revenue, capability, and customer reach.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK / PROJECTS SHOWCASE -->
+  <section id="projects" class="py-16 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1 rounded-full border border-blue-200/50 dark:border-blue-800/50">CASE STUDIES</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">Featured Client Projects</h2>
+      </div>
+      <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md mt-2 md:mt-0">Real world applications delivering measurable speed, efficiency, and scale.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Project 1 -->
+      <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm card-hover">
+        <div class="h-44 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 p-5 flex flex-col justify-between text-white mb-5">
+          <span class="text-xs font-semibold uppercase bg-white/20 backdrop-blur-sm self-start px-2.5 py-1 rounded-full">AI & Automation</span>
+          <div>
+            <div class="text-xs opacity-80">FinTech Platform</div>
+            <div class="text-lg font-bold">Predictive Risk Engine</div>
+          </div>
+        </div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Automated Underwriting AI</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Decreased loan processing time by 75% using secure LLM document extraction and automated verification.</p>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm card-hover">
+        <div class="h-44 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-700 p-5 flex flex-col justify-between text-white mb-5">
+          <span class="text-xs font-semibold uppercase bg-white/20 backdrop-blur-sm self-start px-2.5 py-1 rounded-full">Cloud ERP</span>
+          <div>
+            <div class="text-xs opacity-80">Supply Chain</div>
+            <div class="text-lg font-bold">Smart Logistics Hub</div>
+          </div>
+        </div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Real-Time Fleet Management</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Integrated telemetry, routing algorithms, and multi-tenant cloud sync handling 100k+ events/sec.</p>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm card-hover">
+        <div class="h-44 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 p-5 flex flex-col justify-between text-white mb-5">
+          <span class="text-xs font-semibold uppercase bg-white/20 backdrop-blur-sm self-start px-2.5 py-1 rounded-full">Web & Mobile</span>
+          <div>
+            <div class="text-xs opacity-80">HealthTech</div>
+            <div class="text-lg font-bold">Telehealth Portal</div>
+          </div>
+        </div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Patient Care Ecosystem</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">HIPAA-compliant video consultation platform with digital medical records and appointment dispatch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CALL TO ACTION BANNER -->
+  <section id="contact-banner" class="max-w-7xl mx-auto px-6 py-12">
+    <div class="bg-gradient-to-r from-blue-50 via-sky-50 to-blue-100 dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 border border-blue-200/80 dark:border-blue-900/60 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+      
+      <!-- Left info with paper airplane icon -->
+      <div class="flex items-center space-x-5">
+        <div class="w-14 h-14 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-500/20 shrink-0">
+          <svg class="w-7 h-7 transform -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Have an idea? Let's build it together.</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mt-0.5">Get in touch with us for your next project, architecture review, or AI collaboration.</p>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button onclick="openModal()" class="shrink-0 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-brand-600/25 transition duration-200 flex items-center space-x-2 group">
+        <span>Contact Us</span>
+        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- LOCATION & GOOGLE MAPS SECTION -->
+  <section id="contact" class="py-20 max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1 rounded-full border border-blue-200/50 dark:border-blue-800/50">LOCATION & HEADQUARTERS</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">Find Us in Lalitpur</h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">Visit our engineering office or schedule an on-site architecture session.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <!-- Office Details Card -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-6 bg-white dark:bg-slate-800/90 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-700 shadow-sm text-left">
+        <div class="space-y-6">
+          <div class="flex items-center space-x-3 pb-4 border-b border-slate-100 dark:border-slate-700/80">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-lg text-slate-900 dark:text-white">Aarohan Technology Pvt. Ltd.</h3>
+              <p class="text-xs text-brand-600 dark:text-brand-400 font-semibold">Engineering Headquarters</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3.5">
+            <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Physical Address</div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed mt-0.5">
+                1st Floor, Nepal Red Cross Society Building<br>
+                Balkumari, Lalitpur, Bagmati Province, Nepal
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3.5">
+            <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Working Hours</div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-0.5">
+                Sunday – Friday: 9:00 AM – 6:00 PM (NPT)<br>
+                <span class="text-[11px] text-slate-400">Engineering support 24/7 on-call</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3.5">
+            <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Email & Inquiries</div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-0.5">
+                info@aarohantech.com<br>
+                contact@aarohantech.com
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-slate-100 dark:border-slate-700/80 flex flex-wrap gap-3">
+          <a href="https://www.google.com/maps/search/?api=1&query=Nepal+Red+Cross+Society+Building,+Balkumari,+Lalitpur,+Nepal" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm transition">
+            <span>Get Directions</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+          <button onclick="openModal()" class="inline-flex items-center space-x-2 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-xs font-semibold px-5 py-2.5 rounded-full border border-slate-200 dark:border-slate-600 transition">
+            <span>Schedule a Visit</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Google Maps Embed -->
+      <div class="lg:col-span-7 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-700 shadow-lg relative min-h-[380px] lg:min-h-[460px] bg-slate-100 dark:bg-slate-800">
+        <iframe title="Aarohan Technology Office Location" src="https://maps.google.com/maps?q=Nepal+Red+Cross+Society+Building,+Balkumari,+Lalitpur,+Nepal&t=&z=16&ie=UTF8&iwloc=&output=embed" class="w-full h-full min-h-[380px] lg:min-h-[460px] border-0" allowfullscreen="" loading="lazy"></iframe>
+
+        <!-- Map Badge -->
+        <div class="absolute top-4 left-4 z-10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-blue-100 dark:border-slate-700 shadow-xl flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+          </div>
+          <div class="text-left">
+            <div class="text-xs font-bold text-slate-900 dark:text-white">Aarohan Technology</div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400">1st Floor, Nepal Red Cross Society Bldg, Balkumari</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-slate-800 dark:text-white">Aarohan Technology</span>
+        <span>© 2026. All rights reserved.</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="#services" class="hover:text-brand-600 transition">Services</a>
+        <a href="#about" class="hover:text-brand-600 transition">About</a>
+        <a href="#projects" class="hover:text-brand-600 transition">Projects</a>
+        <a href="#contact" class="hover:text-brand-600 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONTACT MODAL -->
+  <div id="contactModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-slate-200 dark:border-slate-700 relative animate-float">
+      
+      <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 dark:hover:text-white p-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <div class="mb-6">
+        <div class="inline-flex items-center space-x-2 text-xs font-bold text-brand-600 uppercase tracking-wider mb-1">
+          <span>Start a Project</span>
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Let's connect with Aarohan</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Leave your details and our team will get back to you promptly.</p>
+      </div>
+
+      <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+          <input type="text" required placeholder="Your Name" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Work Email</label>
+          <input type="email" required placeholder="you@company.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Service Needed</label>
+          <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+            <option>Software Development</option>
+            <option>Web Development</option>
+            <option>AI Solutions</option>
+            <option>Digital Solutions</option>
+            <option>Consulting & Architecture</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Project Details</label>
+          <textarea rows="3" placeholder="Tell us about your project requirements..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-600"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-brand-600/25 text-sm">
+          Send Message
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      const text = document.getElementById('themeToggleText');
+      text.innerText = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+
+    function openModal() {
+      const modal = document.getElementById('contactModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('contactModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert("Thank you! Your message has been received. Aarohan Technology will reach out shortly.");
+      closeModal();
+    }
+  </script>
+</body>
+</html>
